@@ -26,8 +26,9 @@ export class PostEffects {
       mergeMap(
         () => this.service.getPosts()
           .pipe(
-            map(data => {
-                return new GetPostsSuccessAction(data)
+            map((data:any) => {
+                console.log('data',data);
+                return new GetPostsSuccessAction(data.data)
             }),
             catchError(error => of(new GetPostsFailAction(error)))
           )

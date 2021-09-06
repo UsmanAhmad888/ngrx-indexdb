@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { combineAll } from 'rxjs/operators';
 
 // import Post from '../models/post.model';
 
@@ -10,11 +11,24 @@ import { HttpClient } from '@angular/common/http';
 export class PostsService {
 
   baseUrl = 'https://jsonplaceholder.typicode.com';
+  baseUrl2 = 'http://3.130.239.232:3002/jobpayment/overview?pageNo=1&limit=10';
 
   constructor(private http: HttpClient) { }
 
   getPosts() {
-    return this.http.get<Array<any>>(`${this.baseUrl}/posts?_limit=10`);
+    var headers_object = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzZXNzaW9uSWQiOjkzMSwidXNlcklkIjo0OCwicm9sZSI6IkFETUlOIiwicmVmcmVzaFRva2VuIjoidXd1bWFkaGtvaSIsImlhdCI6MTYzMDkwNzMxMiwiZXhwIjoxNjMwOTI1MzEyfQ.djAufLD3-_UMtpCLniaO49VnWhhJzA_Dig_u4txZvaE'});
+      
+
+    const httpOptions = {
+      headers: headers_object
+    };
+    return this.http.get<Array<any>>(this.baseUrl2,httpOptions);
+    // data.subscribe(res=>{
+    //   console.log('data res',res);
+    // })
+    // return data;
   }
   
   addPost(post: any){
