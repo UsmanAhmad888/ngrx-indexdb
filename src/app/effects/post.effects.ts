@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, Effect, ofType } from '@ngrx/effects';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
@@ -20,22 +20,23 @@ import { PostsService } from '../services/posts.service';
 @Injectable()
 export class PostEffects {
 
-  @Effect() getPosts$ = this.actions$
+  getPosts$ =   createEffect(() =>this.actions$
     .pipe(
       ofType<GetPostsAction>(PostActionTypes.GET_POSTS),
       mergeMap(
         () => this.service.getPosts()
           .pipe(
-            map((data:any) => {
-                console.log('data',data);
-                return new GetPostsSuccessAction(data.data)
+            map(data => {
+              console.log('data',data);
+                return new GetPostsSuccessAction(data)
             }),
             catchError(error => of(new GetPostsFailAction(error)))
           )
       ),
   )
+  )
 
-  @Effect() deletePost$ = this.actions$
+  deletePost$ =  createEffect(() =>this.actions$
     .pipe(
       ofType<DeletePostAction>(PostActionTypes.DELETE_POST),
       mergeMap(
@@ -48,8 +49,9 @@ export class PostEffects {
           )
       ),
   )
+  )
 
-  @Effect() addPost$ = this.actions$
+   addPost$ =   createEffect(() =>this.actions$
     .pipe(
       ofType<AddPostAction>(PostActionTypes.ADD_POST),
       mergeMap(
@@ -62,6 +64,7 @@ export class PostEffects {
           )
       ),
   )
+   )
 
   constructor(
     private actions$: Actions,

@@ -22,13 +22,13 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.posts$ = this.store.select(store => store.post.posts);
     this.posts$.subscribe(res=>{
-      console.log('posts',res);
+      console.log('posts1',res);
     })
     
     this.error$ = this.store.select(store => store.post.error);
     this.store.dispatch(new GetPostsAction());
     this.posts$.subscribe(res=>{
-      console.log('posts',res);
+      console.log('posts2',res);
     })
   }
 
