@@ -1,18 +1,13 @@
-import Post from './post.model';
-import { PostState,PostsReducer } from '../reducers/posts.reducer';
 import { ActionReducerMap } from '@ngrx/store';
+import { UsersReducer, UserState } from '../reducers/users.reducer';
 
 
 export const rootReducer = {};
 
 export default interface AppState {
-    post: PostState;
+    user:UserState;
 }
 
 export const reducers: ActionReducerMap<AppState, any> = {
-    post: PostsReducer
+    user:UsersReducer
 };
-
-// StoreModule.forRoot({
-//     post: PostsReducer
-//   }, {}),

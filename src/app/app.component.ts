@@ -19,7 +19,7 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    this.loading$ = this.store.select(store => store.post.loading);
+    this.loading$ = this.store.select(store => store.user.loading);
     console.log('loading',this.loading$);
   }
 }

@@ -1,4 +1,4 @@
-.add-post{
+.add-user{
     margin: 20px 10px;
     textarea, input{
         width: 100%;
@@ -9,7 +9,7 @@
         padding: 5px 10px;
     };
     input[type="text"]{
-        border: 3px solid #ff7a7a;
+        border: 1px solid #008724;
         height: 40px;
     };
     textarea{
@@ -17,7 +17,7 @@
         height: 60px;
     };
     input[type="button"]{
-        background: #ff7a7a;
+        // background: #008724;
         color: white;
         width: auto;
         border: none;

@@ -1,41 +1,51 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { PostsReducer} from './reducers/posts.reducer';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/Forms';
 import { StoreModule } from '@ngrx/store';
 import { HttpClientModule } from '@angular/common/http';
-// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
-// import { AppComponent } from './app.component';
-import { PostsComponent } from './components/posts/posts/posts.component';
-// import { PostsReducer} from './reducers/posts.reducer';
-import { AddPostComponent } from './components/posts/add-post/add-post.component';
-import { DeletePostComponent } from './components/posts/delete-post/delete-post.component';
-import { PostEffects } from './effects/post.effects';
 import { reducers } from '../app/models/app-state.model';
+import { AddUserComponent } from './components/users/add-user/add-user.component';
+import { UsersComponent } from './components/users/users/users.component';
+import { UserEffects } from './effects/user.effects';
+
+import { DBConfig, NgxIndexedDBModule } from 'ngx-indexed-db';
+
+const dbConfig: DBConfig = {
+  name: 'MyDb',
+  version: 1,
+  objectStoresMeta: [{
+    store: 'users',
+    storeConfig: { keyPath: 'id', autoIncrement: true },
+    storeSchema: [
+      { name: 'fName', keypath: 'fName', options: { unique: false } },
+      { name: 'lName', keypath: 'lName', options: { unique: false } },
+      { name: 'email', keypath: 'email', options: { unique: false } }
+    ]
+  }]
+};
 @NgModule({
   declarations: [
     AppComponent,
     AppComponent,
-    PostsComponent,
-    AddPostComponent,
-    DeletePostComponent
+    AddUserComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxIndexedDBModule.forRoot(dbConfig),
     StoreModule.forRoot(reducers),
     // StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     EffectsModule.forRoot([
-      PostEffects
+      UserEffects
     ])
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

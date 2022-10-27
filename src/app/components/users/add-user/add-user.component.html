@@ -1,0 +1,17 @@
+<h1>Create A User</h1>
+<div class="add-user">
+    <form>
+        <div>
+            <input type="text" placeholder="FirstName" name="FirstName" [(ngModel)]="user.fName" />
+        </div>
+        <div>
+            <input type="text" placeholder="LastName" name="LastName" [(ngModel)]="user.lName" />
+        </div>
+        <div>
+            <input type="text" placeholder="Email" name="Email" [(ngModel)]="user.email" />
+        </div>
+        <div>
+            <input type="button" class="btn btn-primary" value="Add User" (click)="createUser()">
+        </div>
+    </form>
+</div>
