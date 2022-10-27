@@ -23,8 +23,9 @@
                 <td>
                     <p>{{user.email}}</p>
                 </td>
-                <td><span (click)="deleteUser(user.id)">X</span></td>
-                <td><span (click)="edit(user.id)">edit</span></td>
+                <td><span (click)="deleteUser(user.id)"><i class="fa fa-trash" aria-hidden="true"> </i>
+                </span></td>
+                <td><span (click)="edit(user.id)" class="btn-icon bg-primary"><i class="fa fa-pencil " aria-hidden="true"> </i></span></td>
             </tr>
         </tbody>
     </table>
