@@ -11,7 +11,8 @@
             <input type="text" placeholder="Email" name="Email" [(ngModel)]="user.email" />
         </div>
         <div>
-            <button type="button" class="btn btn-primary" (click)="createUser()">{{!user.id ? 'Add' :'Update'}} User</button>
-        </div>
+            <button type="button" class="btn btn-primary mr-2" (click)="createUser()">{{!user.id ? 'Add' :'Update'}} User</button>
+            <button type="button" class="btn btn-light ml-2" (click)="clear()">Clear</button>
+        </div>  
     </form>
 </div>

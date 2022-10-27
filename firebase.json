@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "/dist/ngrx",
+    "public": "/dist/ngrx-indexdb-assignment",
     "ignore": [
       "firebase.json",
       "**/.*",

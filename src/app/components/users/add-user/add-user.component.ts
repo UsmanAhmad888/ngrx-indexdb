@@ -40,4 +40,13 @@ export class AddUserComponent implements OnInit {
     this.user.email = '';
   }
 
+  clear(){
+    this.user={
+      id: 0,
+      fName: '',
+      lName: '',
+      email: ''
+    }
+  }
+
 }
