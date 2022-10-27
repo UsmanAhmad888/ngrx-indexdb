@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {Store} from '@ngrx/store';
 
 import AppState from '../../../models/app-state.model';
-import {AddUserAction, UserAction} from '../../../actions/users.actions';
+import {AddUserAction, UpdateUserAction, UserAction} from '../../../actions/users.actions';
 import User from 'src/app/models/user.modal';
 
 @Component({
@@ -12,7 +12,7 @@ import User from 'src/app/models/user.modal';
 })
 export class AddUserComponent implements OnInit {
 
-  user: User = {
+  @Input() user: User = {
     id: 0,
     fName: '',
     lName: '',
@@ -25,10 +25,16 @@ export class AddUserComponent implements OnInit {
   }
 
   createUser(){
-    this.user.id = Math.floor(Math.random() * 10);
+    // this.user.id = Math.floor(Math.random() * 10);
     console.log("add user component",this.user);
-    
-    this.store.dispatch(new AddUserAction({...this.user}));
+    if(!this.user.id){
+
+      this.store.dispatch(new AddUserAction({...this.user}));
+    }else{
+      console.log("updating user",this.user);
+      
+      this.store.dispatch(new UpdateUserAction({...this.user}));
+    }
     this.user.fName = '';
     this.user.lName = '';
     this.user.email = '';

@@ -44,4 +44,12 @@ export class UsersService {
     }));
    
   }
+
+  updateUser(user: any){
+   return  this.dbService.update('users', user).pipe(map((allusers) => {
+      this.store.dispatch(new GetUsersAction());
+      return user;
+    }));
+   
+  }
 }

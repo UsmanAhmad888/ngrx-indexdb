@@ -14,6 +14,10 @@ export enum UserActionTypes {
     DELETE_USER = '[USER] Delete User',
     DELETE_USER_SUCCESS = '[USER] Delete User Success',
     DELETE_USER_FAIL = '[USER] Delete User Fail',
+
+    UPDATE_USER = '[USER] Update User',
+    UPDATE_USER_SUCCESS = '[USER] Update User Success',
+    UPDATE_USER_FAIL = '[USER] Update User Fail',
 }
 
 
@@ -67,6 +71,23 @@ export class DeleteUserFailAction implements Action {
     constructor(public payload: any){}
 }
 
+// update user
+
+export class UpdateUserAction implements Action {
+    readonly type = UserActionTypes.UPDATE_USER;
+    constructor(public payload: any){}
+}
+
+export class UpdateUserSuccessAction implements Action {
+    readonly type = UserActionTypes.UPDATE_USER_SUCCESS;
+    constructor(public payload: string | any){}
+}
+
+export class UpdateUserFailAction implements Action {
+    readonly type = UserActionTypes.UPDATE_USER_FAIL;
+    constructor(public payload: any){}
+}
+
 /*
 ** End - Delete Post
 **/
@@ -80,4 +101,7 @@ export type UserAction =
     DeleteUserFailAction |
     GetUsersAction |
     GetUsersSuccessAction |
-    GetUsersFailAction;;
+    GetUsersFailAction |
+    UpdateUserAction |
+    UpdateUserSuccessAction |
+    UpdateUserFailAction;

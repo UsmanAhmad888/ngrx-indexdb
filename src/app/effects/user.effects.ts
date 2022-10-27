@@ -13,7 +13,8 @@ import {
         DeleteUserFailAction,
         AddUserAction,
         AddUserSuccessAction,
-        AddUserFailAction
+        AddUserFailAction,
+        UpdateUserSuccessAction
      } from '../actions/users.actions';
 import { UsersService } from '../services/users.service';
 
@@ -59,6 +60,21 @@ export class UserEffects {
           .pipe(
             map(data2 => {
                 return new AddUserSuccessAction(data.payload)
+            }),
+            catchError(error => of(new AddUserFailAction(error)))
+          )
+      ),
+  )
+   )
+
+   updateUser$ =   createEffect(() =>this.actions$
+    .pipe(
+      ofType<AddUserAction>(UserActionTypes.UPDATE_USER),
+      mergeMap(
+        (data) => this.service.updateUser(data.payload)
+          .pipe(
+            map(data2 => {
+                return new UpdateUserSuccessAction(data.payload)
             }),
             catchError(error => of(new AddUserFailAction(error)))
           )

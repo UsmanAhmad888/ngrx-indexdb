@@ -11,7 +11,7 @@
             <input type="text" placeholder="Email" name="Email" [(ngModel)]="user.email" />
         </div>
         <div>
-            <input type="button" class="btn btn-primary" value="Add User" (click)="createUser()">
+            <button type="button" class="btn btn-primary" (click)="createUser()">{{!user.id ? 'Add' :'Update'}} User</button>
         </div>
     </form>
 </div>

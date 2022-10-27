@@ -34,6 +34,26 @@ export function UsersReducer(state: UserState = initialState, action: UserAction
                 loading: false
             };
 
+        case UserActionTypes.UPDATE_USER:
+            return {
+                ...state,
+                loading: true
+            }
+        case UserActionTypes.UPDATE_USER_SUCCESS: {
+            let updatedPosts = [...state.users];
+            return {
+                ...state,
+                users: updatedPosts,
+                loading: false
+            };
+        }
+        case UserActionTypes.UPDATE_USER_FAIL:
+            return {
+                ...state,
+                error: action.payload,
+                loading: false
+            }
+            
         case UserActionTypes.DELETE_USER:
             return {
                 ...state,

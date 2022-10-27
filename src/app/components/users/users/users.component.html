@@ -1,3 +1,5 @@
+<app-add-user [user]="user"></app-add-user>
+
 <h1>Users</h1>
 <div class="posts">
     <p *ngIf="!(users$ | async)?.length">No Users to show...</p>
@@ -21,7 +23,8 @@
                 <td>
                     <p>{{user.email}}</p>
                 </td>
-                <td><span (click)="deletePost(user.id)">X</span></td>
+                <td><span (click)="deleteUser(user.id)">X</span></td>
+                <td><span (click)="edit(user.id)">edit</span></td>
             </tr>
         </tbody>
     </table>
