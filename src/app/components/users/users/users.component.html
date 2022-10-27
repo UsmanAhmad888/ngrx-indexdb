@@ -13,6 +13,7 @@
             </tr>
         </thead>
         <tbody>
+            <br>
             <tr *ngFor="let user of users$ | async; let i = index">
                 <td>
                     <p>{{user.fName}}</p>
@@ -23,9 +24,12 @@
                 <td>
                     <p>{{user.email}}</p>
                 </td>
-                <td><span (click)="deleteUser(user.id)"><i class="fa fa-trash" aria-hidden="true"> </i>
-                </span></td>
-                <td><span (click)="edit(user.id)" class="btn-icon bg-primary"><i class="fa fa-pencil " aria-hidden="true"> </i></span></td>
+                <td class="d-flex"><span (click)="deleteUser(user.id)"><i class="fa fa-trash" aria-hidden="true"> </i>
+                </span>
+                &nbsp;
+                &nbsp;
+                <span (click)="edit(user.id)" class="btn-icon bg-primary"><i class="fa fa-pencil " aria-hidden="true"> </i></span></td>
+                
             </tr>
         </tbody>
     </table>
