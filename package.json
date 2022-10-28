@@ -1,8 +1,11 @@
 {
   "name": "ngrx-index-assignment",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
+    "electron": "electron .",
+    "electron-build": "ng build --prod && electron .",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
@@ -33,6 +36,7 @@
     "@angular/compiler-cli": "~12.2.0",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "electron": "^21.2.0",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
